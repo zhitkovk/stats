@@ -25,7 +25,7 @@ def t_test(test, control):
     std = np.sqrt(np.sum([np.var(test, ddof=1), np.var(control, ddof=1)]) / sample_size)
     
     tvalue = delta / std
-    pvalue = 2 * t.sf(tvalue, df = 2 * sample_size - 2)
+    pvalue = 2 * t.sf(np.abs(tvalue), df = 2 * sample_size - 2)
     
     return delta, std, tvalue, pvalue
 
