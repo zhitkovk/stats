@@ -30,7 +30,7 @@ def t_test(test, control):
     return delta, std, tvalue, pvalue
 
 
-def mde(alpha, stat_test_power, std):
+def mde(alpha, stat_test_power, se):
     """
     We want to find a threshold value c, such that if the sample mean difference is larger than c, 
     we'll reject the null hypothesis. Basically c is difference between theta_exp and theta_cnt, that
@@ -41,7 +41,7 @@ def mde(alpha, stat_test_power, std):
     """
     
     qnts = norm.isf(alpha / 2.0) + norm.isf(1.0 - stat_test_power)
-    effect_size = qnts * std
+    effect_size = qnts * se
     
     return effect_size
 
